@@ -1,0 +1,39 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+// write your code here
+        System.out.println("Ваша цель состоит в том, чтобы точно угадать число!");
+        for (int i = 10; i <= 1000; i *= 10)
+            playLevel(i);
+        System.out.println("Вы выиграли игру! Пришло время удалить его прямо сейчас.");
+
+
+        scanner.close();
+    }
+
+    private static void playLevel(int rang) {
+
+
+        int number = (int) (Math.random() * rang);
+
+        while (true) {
+            System.out.println("Попробуйте угадать число в диапазоне от 0 до " + rang);
+            int input_number = scanner.nextInt();
+
+            if (input_number == number) {
+                System.out.println("Ваша догадка верна!");
+                break;
+            }
+            else if (input_number > number)
+                System.out.println("Your guess is correct!");
+            else if (input_number < number)
+                System.out.println("Угаданное число больше, чем введенное вами число!");
+        }
+    }
+}
